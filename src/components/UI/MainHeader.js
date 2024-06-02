@@ -14,7 +14,7 @@ const MainHeader = () => {
 
   return (
     <section className={classes.mainHeader}>
-      <h1>Delibery App</h1>
+      <h1>Delivery App</h1>
       <CartBtn clickHandler={cartBtnHandler} />
       {/* cart modal */}
       {isShowCart && <CartModal />}
