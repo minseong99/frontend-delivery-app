@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./CartBtn.module.css";
 
-const CartBtn = () => {
+const CartBtn = (props) => {
   return (
-    <button className={classes.cartBtn}>
+    <button onClick={props.clickHandler} className={classes.cartBtn}>
       <span>장바구니</span>
     </button>
   );
