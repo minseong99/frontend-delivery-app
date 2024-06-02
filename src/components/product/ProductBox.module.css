@@ -1,0 +1,34 @@
+.productBox {
+  background-color: rgb(219, 63, 58);
+  margin-top: 1rem;
+  width: 60%;
+  border-radius: 0.5rem;
+}
+
+.productHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.productHeader div {
+  padding-top: 1.25rem;
+}
+
+.productMain {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.productMain span {
+  color: white;
+  font-weight: bold;
+}
+
+.invalid {
+  background-color: red;
+}
