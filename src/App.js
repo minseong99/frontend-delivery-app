@@ -1,12 +1,7 @@
 import Layout from "./layout/Layout";
 
 function App() {
-  return (
-    <Layout>
-      {/* items */}
-      {/* delibery modal */}
-    </Layout>
-  );
+  return <Layout>{/* items */}</Layout>;
 }
 
 export default App;
