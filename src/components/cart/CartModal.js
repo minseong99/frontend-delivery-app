@@ -6,6 +6,11 @@ import CartItem from "./CartItem";
 const CartModal = () => {
   const cartContextInfo = useContext(cartContext);
 
+  // 카트를 리셋시킨다.
+  const cancelHandler = () => {
+    cartContextInfo.setIsShow(false);
+  };
+
   return (
     <div className={classes.cartModal}>
       {cartContextInfo.items.map((item) => (
@@ -25,7 +30,7 @@ const CartModal = () => {
             className={classes.totalPrice}
           >{`${cartContextInfo.totalPrice}원`}</span>
           <div className={classes.cartNavBtns}>
-            <button>취소</button>
+            <button onClick={cancelHandler}>취소</button>
             <button>결제</button>
           </div>
         </div>
