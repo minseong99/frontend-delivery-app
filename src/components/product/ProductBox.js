@@ -61,7 +61,7 @@ const ProductBox = (props) => {
       </header>
       <main className={classes.productMain}>
         <span>{`${props.price}원`}</span>
-        {!cartContextInfo.isShow && <button>추가하기</button>}
+        <button>추가하기</button>
       </main>
     </form>
   );

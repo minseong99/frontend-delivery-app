@@ -1,16 +1,25 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import classes from "./CartModal.module.css";
 import cartContext from "../../context/cartContext";
 import CartItem from "./CartItem";
+import ReactDOM from "react-dom";
 
-const CartModal = () => {
+const Backdrop = () => {
   const cartContextInfo = useContext(cartContext);
-
-  // 카트를 리셋시킨다.
-  const cancelHandler = () => {
+  const backdropHandler = () => {
     cartContextInfo.setIsShow(false);
   };
 
+  return <div className={classes.backdrop} onClick={backdropHandler} />;
+};
+
+const Overlay = () => {
+  const cartContextInfo = useContext(cartContext);
+
+  // 카트 모달없애는 로직
+  const cancelHandler = () => {
+    cartContextInfo.setIsShow(false);
+  };
   return (
     <div className={classes.cartModal}>
       {cartContextInfo.items.map((item) => (
@@ -36,6 +45,21 @@ const CartModal = () => {
         </div>
       </nav>
     </div>
+  );
+};
+
+const CartModal = () => {
+  return (
+    <Fragment>
+      {ReactDOM.createPortal(
+        <Backdrop />,
+        document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <Overlay />,
+        document.getElementById("overlay-root")
+      )}
+    </Fragment>
   );
 };
 
