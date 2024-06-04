@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import cartInfoReducer from "../reducer/cartReducer";
 
 const cartContext = createContext({
@@ -6,6 +6,8 @@ const cartContext = createContext({
   totalQuantity: 0,
   totalPrice: 0,
   cartDispatch: (object) => {},
+  isShow: false,
+  setIsShow: (flag) => {},
 });
 
 const CartProvider = (props) => {
@@ -14,6 +16,7 @@ const CartProvider = (props) => {
     totalQuantity: 0,
     totalPrice: 0,
   });
+  const [cartIsShow, setCartIsShow] = useState(false);
 
   //cartContext에 있는 값들을 전역적으로 사용하기 위한 Provider
   return (
@@ -23,6 +26,8 @@ const CartProvider = (props) => {
         totalQuantity: cartInfo.totalQuantity,
         totalPrice: cartInfo.totalPrice,
         cartDispatch: cartInfoDispacth,
+        isShow: cartIsShow,
+        setIsShow: setCartIsShow,
       }}
     >
       {props.children}

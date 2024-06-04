@@ -11,8 +11,8 @@ const cartInfoReducer = (state, action) => {
       return {
         ...state,
         items: [...state.items, newItem],
-        totalQuantity: state.totalQuantity + 1,
-        totalPrice: state.totalPrice + newItem.price,
+        totalQuantity: state.totalQuantity + newItem.quantity,
+        totalPrice: state.totalPrice + newItem.price * newItem.quantity,
       };
     }
     // 추가할 아이템이 items에 존재할 경우
@@ -26,7 +26,7 @@ const cartInfoReducer = (state, action) => {
         ...state,
         items: items,
         totalQuantity: state.totalQuantity + 1,
-        totalPrice: state.totalPrice + newItem.price * newItem.quantity,
+        totalPrice: state.totalPrice + newItem.price,
       };
     }
   }
