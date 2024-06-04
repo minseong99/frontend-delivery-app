@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./ProductBox.module.css";
+import cartContext from "../../context/cartContext";
 
 const ProductBox = (props) => {
+  const cartContextInfo = useContext(cartContext);
   // 제출 수량 상태
   const [enterdQuantity, setEnterdQuantity] = useState("1");
   const [quantityIsValid, setQuantityIsValid] = useState(true);
@@ -10,16 +12,22 @@ const ProductBox = (props) => {
   const productSubmitHandler = (event) => {
     event.preventDefault();
     setEnterdQuantity("1");
-    // 바로 공백을 누르고 입력을 했을때 1로 설정해야한다.
-    if (!enterdQuantity) {
-      console.log(1);
-    }
-    console.log(enterdQuantity);
+    // 바로 공백을 누르고 입력을 했을때 1로 설정해야한다
+
+    cartContextInfo.cartDispatch({
+      type: "add",
+      item: {
+        id: props.id,
+        name: props.name,
+        price: props.price,
+        quantity: Number(enterdQuantity),
+      },
+    });
   };
 
   // 수량 변화 핸들러
   const quantityChangeHandler = (event) => {
-    setEnterdQuantity(event.value);
+    setEnterdQuantity(event.target.value);
     setQuantityIsValid(true);
   };
 
